@@ -1,0 +1,210 @@
+﻿@using Test2.ViewModels
+@model SemesterSubjectVm
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="card-title m-0">Semester Wise Subject Form</h3>
+                        <a href="@Url.Action("Index","SemesterSubject")" class="btn btn-info">
+                            <i class="fa fa-list"></i> List
+                        </a>
+                    </div>
+                    <hr />
+                    <form asp-action="Save" enctype="multipart/form-data" asp-controller="SemesterSubject" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Department</h5>
+                                    <select required class="form-control" asp-for="SemesterSubject.Depid" >
+                                        <option value="">Select Department</option>
+                                        @foreach (var dep in Model.Departmentlist)
+                                        {
+                                            if (Model.SemesterSubject.Id != 0 && dep.Id != Model.SemesterSubject.Depid)
+                                            {
+                                                <option value="@dep.Id" disabled>@dep.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@dep.Id" selected="@(dep.Id == Model.SemesterSubject.Depid)">@dep.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Semester</h5>
+                                    <select asp-for="SemesterSubject.Semesterid" required class="form-control" >
+                                        <option value="">Select Semester</option>
+                                        @foreach (var sem in Model.Semesterlist)
+                                        {
+                                            if (Model.SemesterSubject.Id != 0 && sem.Id != Model.SemesterSubject.Semesterid)
+                                            {
+                                                <option value="@sem.Id" disabled>@sem.Name</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@sem.Id" selected="@(sem.Id == Model.SemesterSubject.Semesterid)">@sem.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Subject</h5>
+                                    <select id="subjectdropdown" class="form-control">
+                                        <option value="">Select Semester</option>
+                                        @foreach (var dep in Model.Subjectlist)
+                                        {
+                                            <option value="@dep.Id">@dep.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                            </div> 
+                            <div class="col-md-5 ">
+                                <button type="button"onclick="Addrow()" class="mt-4 w-50 btn btn-info">
+                                    <i data-feather="plus"></i>
+                                </button>
+
+                            </div>
+                        </div> 
+                        <div class="row mt-3">
+                            <div class="table-responsive">
+                                <table class="table table-bordered "id="subjecttable">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;width:15%;">Sr</th>
+                                            <th style="text-align:left;width:70%;">Subject</th>
+                                            <th style="text-align:center;width:15%;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.SemesterSubject.Id == 0)
+                                        {
+                                        }
+                                        else
+                                        {
+                                            int sr = 0;
+                                            foreach (var it in Model.SemesterSubjectlist)
+                                            {
+                                                <tr>
+                                                    <td style="text-align:center;">@(++sr)</td>
+                                                    <td>@it.Subjectname</td>
+                                                    <td style="text-align:center;">
+                                                        <button type="button" class="btn btn-danger deletebtn">
+                                                            <i data-feather="trash"></i>
+                                                        </button>
+                                                    </td>
+                                                    <input type="hidden" name="SemesterSubjectlist[@(sr - 1)].Subjectid" value="@it.Subjectid" />
+                                                    <input type="hidden" name="SemesterSubjectlist[@(sr - 1)].Subjectname" value="@it.Subjectname" />
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                        </div>  
+                        <div class="text-center mt-3">
+                            <button type="submit" onclick="Save(event)" class="btn btn-success">
+                                <i class="fa fa-save"></i> Submit
+                            </button>
+                        </div>
+                        @Html.HiddenFor(e => e.SemesterSubject.Id)
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+         function Save(event) {
+        var rowCount = $("#subjecttable tbody tr").length;
+
+        if (rowCount === 0) {
+            alert("Please add at least one subject before submitting.");
+            event.preventDefault(); 
+        }
+    }
+
+    function Addrow() {
+        var subjectId = $("#subjectdropdown").val();
+        var subjectName = $("#subjectdropdown option:selected").text();
+
+        if (subjectId == 0 || subjectId == null || subjectId === "") {
+            alert("Please select a subject first!");
+            return;
+        }
+        var exists = false;
+        $("input[name^='SemesterSubjectlist'][name$='.Subjectid']").each(function () {
+            if ($(this).val() == subjectId) {
+                exists = true;
+                return false;
+            }
+        });
+
+        if (exists) {
+            alert("This subject has already been added.");
+            return;
+        }
+
+        let sr = $("#subjecttable tbody tr").length;
+
+        $("#subjecttable tbody").append(`
+            <tr>
+                <td style="text-align:center;">${sr + 1}</td>
+                <td>${subjectName}</td>
+                <td style="text-align:center;">
+                    <button type="button" class="btn btn-danger deletebtn">
+                        <i data-feather="trash"></i>
+                    </button>
+                </td>
+                <input type="hidden" name="SemesterSubjectlist[${sr}].Subjectid" value="${subjectId}" />
+                <input type="hidden" name="SemesterSubjectlist[${sr}].Subjectname" value="${subjectName}" />
+            </tr>
+        `);
+
+        $("#subjectdropdown").val('');
+        feather.replace();
+    }
+
+
+
+    $(document).on("click", ".deletebtn", function () {
+        if(!confirm('Do you want to delete this....')) return;
+        $(this).closest('tr').remove();
+
+        $("#subjecttable tbody tr").each(function (index) {
+            $(this).find("td:first").text(index + 1);
+        });
+    });
+</script>
+
+
+
+
+@if (TempData["Saved"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '@TempData["Saved"]',
+                position:'bottom-right'
+            });
+        });
+    </script>
+}

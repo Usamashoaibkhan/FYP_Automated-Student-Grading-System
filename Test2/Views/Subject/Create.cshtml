@@ -1,0 +1,49 @@
+﻿@model Subject
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="card-title m-0"> Subject Form</h3>
+                        <a href="@Url.Action("Index","Subject")" class="btn btn-info">
+                            <i class="fa fa-list"></i> List
+                        </a>
+                    </div>
+                    <hr />
+                    <form asp-action="Save" enctype="multipart/form-data" asp-controller="Subject" method="post">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <h5>Name</h5>
+                                    <input required class="form-control" asp-for="Name" placeholder="Enter Name....." />
+                                </div>
+                            </div>
+
+                        </div>  <div class="text-center mt-3">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-save"></i> Submit
+                            </button>
+                        </div>
+                   @Html.HiddenFor(e=>e.Id)
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["Saved"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '@TempData["Saved"]',
+                position:'bottom-right'
+            });
+        });
+    </script>
+}

@@ -1,0 +1,144 @@
+﻿@model Test2.ViewModels.TeacherVm
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card"style="min-height:70vh;">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="card-title m-0"> Update Profile</h3>
+                      
+                    </div>
+                    <hr />
+                    <form asp-action="UpdateProfile" enctype="multipart/form-data" asp-controller="Teacher" method="post">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <h5>Name</h5>
+                                    <input required class="form-control" type="text" asp-for="Teacher.Name" placeholder="Enter Name....." />
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <h5>Address</h5>
+                                    <input required class="form-control" type="text" asp-for="Teacher.Address" placeholder="Enter Address....." />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Cnic</h5>
+                                    <input oninput="formatCNIC1(this)"
+                                           pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}"
+                                           title="Format: 12345-1234567-1 (13 digits with dashes)" required class="form-control" type="text" asp-for="Teacher.Cnic" placeholder="Enter Cnic....." />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Email</h5>
+                                    <input required class="form-control" type="email" asp-for="Teacher.Email" placeholder="Enter Email....." />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Phone</h5>
+                                    <input type="text" asp-for="Teacher.Phone" oninput="formatCNIC(this)" pattern="[0-9]{4}-[0-9]{7}" placeholder="Enter Phone....." class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Department</h5>
+                                    <input type="text" readonly asp-for="Teacher.Depname" placeholder="Department....." class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Semester</h5>
+                                    <input type="text" readonly asp-for="Teacher.Semestername" placeholder="Semester....." class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Subject</h5>
+                                    <input type="text" readonly asp-for="Teacher.Subjectname" placeholder="Subject....." class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>User Name</h5>
+                                    <input type="text" asp-for="Userlogin.Username" placeholder="Enter Username....." class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <h5>Password</h5>
+                                    <div class="position-relative">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   id="passtext"
+                                                   asp-for="Userlogin.Password"
+                                                   autocomplete="current-password"
+                                                   placeholder="Password....."
+                                                   class="form-control pe-5"
+                                                   required />
+
+                                            <span class="input-group-text" style="cursor: pointer;">
+                                                <i id="togglePass" class="fa fa-eye-slash"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fa fa-save"></i> Update
+                            </button>
+                        </div>
+                        @Html.HiddenFor(e => e.Teacher.Id)
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggle = document.getElementById("togglePass");
+        const password = document.getElementById("passtext");
+
+        toggle.addEventListener("click", function () {
+            const isText = password.type === "text";
+            password.type = isText ? "password" : "text";
+            toggle.classList.toggle("fa-eye");
+            toggle.classList.toggle("fa-eye-slash");
+        });
+    });
+
+
+
+     function formatCNIC1(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (value.length > 5) value = value.slice(0, 5) + '-' + value.slice(5);
+    if (value.length > 13) value = value.slice(0, 13) + '-' + value.slice(13);
+    input.value = value.slice(0, 15);
+    }  function formatCNIC(input)
+    {
+    let value = input.value.replace(/\D/g, '');
+    if (value.length > 4) value = value.slice(0, 4) + '-' + value.slice(4);
+    input.value = value.slice(0, 12);
+    }
+</script>
+@if (TempData["Saved"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '@TempData["Saved"]',
+                position:'bottom-right'
+            });
+        });
+    </script>
+}
