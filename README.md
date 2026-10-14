@@ -2,7 +2,7 @@
 
 # 🎓 Automated Student Grading System
 
-**An AI-powered, role-based web platform that automates assignment evaluation using NLP and Large Language Models.**
+**An AI-powered, role-based web platform that automatically evaluates Word-based assignments and quizzes using NLP and Large Language Models.**
 
 ![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white)
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core_MVC-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
@@ -20,7 +20,7 @@ Final Year Project · BS Computer Science · University of Southern Punjab, Mult
 
 Manual grading is slow, inconsistent and delays student feedback. This system solves that by combining **automated NLP-based grading** with **instructor review**, so grading is fast, fair and transparent.
 
-Students submit assignments online, the system evaluates them with an LLM and a rule-based engine, and teachers review, adjust and publish the final results. Students then see their marks, GPA, grade and personalised feedback in their own dashboard.
+Students submit their work as **Word (`.docx`) files**, and the system **automatically reads and evaluates the Word file on its own**, assigning marks and generating feedback using an LLM and a rule-based engine. Teachers can then review, adjust and publish the final results. Students see their marks, GPA, grade and personalised feedback in their own dashboard.
 
 ---
 
@@ -29,7 +29,7 @@ Students submit assignments online, the system evaluates them with an LLM and a 
 | | |
 |---|---|
 | 🎥 **Demo Video** | [Watch here](https://drive.google.com/file/d/1OAUfslDyeX8Gy8vxNZ1dXmRGcfecWy8W/view?usp=drive_link) |
-| 📄 **Project Report** | [FYP_Report_Usama_Shoaib.pdf]([./FYP_Report_Usama_Shoaib.pdf](https://drive.google.com/file/d/1PzGv9T7Gh7-9kijBqL4RPdfv9r3TUpcG/view?usp=drive_link)) |
+| 📄 **Project Report** | [Read the FYP Report](https://drive.google.com/file/d/1PzGv9T7Gh7-9kijBqL4RPdfv9r3TUpcG/view?usp=drive_link) |
 
 ---
 
@@ -42,8 +42,9 @@ Students submit assignments online, the system evaluates them with an LLM and a 
 
 ### 👩‍🏫 Teacher
 - Upload assignments with due dates and track student submissions
-- **NLP auto-grading** with manual override and custom feedback
-- Enter quiz, attendance, midterm and final marks with automatic **total, GPA and grade** calculation
+- **Automatic evaluation of Word files**: the system reads the submitted `.docx` itself and assigns marks using NLP, for both assignments and quizzes
+- Manual override of predicted marks and custom feedback
+- Enter attendance, midterm and final marks; **total, GPA and grade** are calculated automatically
 - Visual dashboard with grade distribution and GPA charts
 - **At-risk student detection** (GPA below 2.0) with direct feedback messaging
 
@@ -58,10 +59,10 @@ Students submit assignments online, the system evaluates them with an LLM and a 
 ## 🧠 How the Grading Works
 
 ```
-Student uploads .docx
+Student uploads assignment / quiz (.docx)
         │
         ▼
-Text extraction & cleaning
+System automatically extracts and cleans the text from the Word file
         │
         ├──► DeepInfra LLM (grammar, relevance, structure)
         │
@@ -74,7 +75,7 @@ Predicted marks + feedback
 Teacher reviews / adjusts  ──►  Final result (marks, GPA, grade)
 ```
 
-This hybrid approach combines the context awareness of an LLM with the transparency of rule-based scoring. In testing, the automated results showed about **90% alignment** with manual grading.
+This hybrid approach combines the context awareness of an LLM with the transparency of rule-based scoring.
 
 ---
 
@@ -119,9 +120,11 @@ Test2.sln           Visual Studio solution
 ### Installation
 
 1. **Clone the repository**
+
 ```bash
    git clone https://github.com/Usamashoaibkhan/Automated-Student-Grading-System.git
 ```
+
 2. **Open** `Test2.sln` in Visual Studio 2022.
 3. **Create the database** by running `Test2/script.sql` in SQL Server.
 4. **Configure** `Test2/appsettings.json` with your own database connection string and DeepInfra API key.
@@ -136,7 +139,7 @@ Test2.sln           Visual Studio solution
 | Role | Access |
 |---|---|
 | Admin | System, academic data and result management |
-| Teacher | Assignments, NLP grading, results and feedback |
+| Teacher | Assignments, quizzes, NLP grading, results and feedback |
 | Student | Submissions, results and feedback |
 
 Each role has its own secure login and dashboard.
@@ -145,10 +148,15 @@ Each role has its own secure login and dashboard.
 
 ## ⚠️ Limitations & Future Work
 
-- Only online, text-based (`.docx`) submissions are graded
+**Current scope**
+- Automatically evaluates **online Word-based (`.docx`) assignments and quizzes** using NLP and assigns marks with feedback
+- Attendance, midterm and final marks are entered by the teacher; the system calculates total marks, GPA and grade automatically
+
+**Limitations**
+- Only online, text-based submissions are graded
 - Plagiarism detection is not included yet
 
-**Planned improvements:** domain-specific NLP tuning, advanced analytics, plagiarism detection, a mobile app and personalised AI recommendations.
+**Planned improvements:** domain-specific NLP tuning, plagiarism detection, advanced analytics, a mobile app and personalised AI recommendations.
 
 ---
 
