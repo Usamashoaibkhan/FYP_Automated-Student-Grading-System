@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:000000,50:0d1117,100:1f2a44&text=Student%20Grading%20System&fontColor=58a6ff&fontSize=50&fontAlignY=40&desc=AI%20Powered%20Automated%20Grading%20Platform&descColor=c9d1d9&descSize=18&descAlignY=62" width="100%" alt="Banner"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&height=220&color=0:000000,50:0d1117,100:1f2a44&text=Automated%20Student%20Grading%20System&fontColor=58a6ff&fontSize=44&fontAlignY=40&desc=AI%20Powered%20Grading%20Platform&descColor=c9d1d9&descSize=18&descAlignY=62" width="100%" alt="Automated Student Grading System"/>
 
 <a href="https://github.com/Usamashoaibkhan/Automated-Student-Grading-System">
   <img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=26&duration=3000&pause=1000&color=58A6FF&background=00000000&center=true&vCenter=true&width=720&lines=%F0%9F%8E%93+AUTOMATED+STUDENT+GRADING+SYSTEM;NLP+%2B+LLM+%2B+ML.NET;Grade+Faster.+Grade+Fairer.;Role-Based+Web+Platform" alt="Typing title"/>
@@ -42,8 +42,9 @@ Students submit their work as **Word (`.docx`) files**, and the system **automat
 
 <div align="center">
 
-<a href="https://drive.google.com/file/d/1OAUfslDyeX8Gy8vxNZ1dXmRGcfecWy8W/view?usp=drive_link"><img src="https://img.shields.io/badge/🎥_Watch_Demo_Video-161b22?style=for-the-badge&logo=googledrive&logoColor=white"/></a>
-<a href="https://drive.google.com/file/d/1PzGv9T7Gh7-9kijBqL4RPdfv9r3TUpcG/view?usp=drive_link"><img src="https://img.shields.io/badge/📄_Read_FYP_Report-161b22?style=for-the-badge&logo=readthedocs&logoColor=white"/></a>
+<a href="https://drive.google.com/file/d/1OAUfslDyeX8Gy8vxNZ1dXmRGcfecWy8W/view?usp=drive_link"><img src="https://img.shields.io/badge/DEMO-Watch_Video-e11d48?style=for-the-badge&logo=youtube&logoColor=white&labelColor=0d1117"/></a>
+&nbsp;&nbsp;
+<a href="https://drive.google.com/file/d/1PzGv9T7Gh7-9kijBqL4RPdfv9r3TUpcG/view?usp=drive_link"><img src="https://img.shields.io/badge/REPORT-Read_Report-10b981?style=for-the-badge&logo=readthedocs&logoColor=white&labelColor=0d1117"/></a>
 
 </div>
 
@@ -207,6 +208,7 @@ Each role has its own secure login and dashboard.
 BS Computer Science (2021-2025), University of Southern Punjab, Multan
 
 <a href="https://github.com/Usamashoaibkhan"><img src="https://img.shields.io/badge/GitHub-Usamashoaibkhan-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
+<a href="https://www.linkedin.com/in/usama-shoaib-45a521259/"><img src="https://img.shields.io/badge/LinkedIn-Usama_Shoaib-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
 
 <div align="center">
 
