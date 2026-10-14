@@ -208,7 +208,7 @@ Each role has its own secure login and dashboard.
 BS Computer Science (2021-2025), University of Southern Punjab, Multan
 
 <a href="https://github.com/Usamashoaibkhan"><img src="https://img.shields.io/badge/GitHub-Usamashoaibkhan-181717?style=for-the-badge&logo=github&logoColor=white"/></a>
-<a href="https://www.linkedin.com/in/usama-shoaib-45a521259/"><img src="https://img.shields.io/badge/LinkedIn-Usama_Shoaib-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+<a href="mailto:usamashoaibkhan22@gmail.com"><img src="https://img.shields.io/badge/Email-Contact_Me-D14836?style=for-the-badge&logo=gmail&logoColor=white"/></a>
 
 <div align="center">
 
