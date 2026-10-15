@@ -172,7 +172,7 @@ git clone https://github.com/Usamashoaibkhan/Automated-Student-Grading-System.gi
 4. **Configure** `Test2/appsettings.json` with your own database connection string and DeepInfra API key.
 5. **Run** the project with `F5`.
 
-> ⚠️ Never commit real API keys or passwords. Use your own credentials locally.
+>
 
 <img src="https://capsule-render.vercel.app/api?type=rect&height=2&color=0:000000,50:58a6ff,100:000000" width="100%"/>
 
